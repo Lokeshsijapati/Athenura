@@ -1,4 +1,4 @@
-package com.athenura.billing_system.serivce;
+package com.athenura.billing_system.service;
 
 import com.athenura.billing_system.dto.CreateUserRequest;
 import com.athenura.billing_system.repository.UserRepository;
