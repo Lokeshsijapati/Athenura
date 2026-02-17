@@ -3,6 +3,8 @@ package com.athenura.billing_system.client.dto;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 
+import java.util.Set;
+
 public record CreateClientRequest(
 
         @NotBlank(message = "Name is required")
@@ -17,5 +19,7 @@ public record CreateClientRequest(
 
         String gstNumber,
 
-        String address
+        String address,
+
+        Set<Long> serviceIds
 ) {}

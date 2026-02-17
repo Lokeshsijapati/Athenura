@@ -6,17 +6,24 @@ import com.athenura.billing_system.client.entity.Client;
 import com.athenura.billing_system.client.exception.ClientAlreadyExistsException;
 import com.athenura.billing_system.client.exception.ClientNotFoundException;
 import com.athenura.billing_system.client.repository.ClientRepository;
+import com.athenura.billing_system.service.entity.ServiceEntity;
+import com.athenura.billing_system.service.repository.ServiceRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
 public class ClientServiceImpl implements ClientService {
 
     private final ClientRepository clientRepository;
+    private final ServiceRepository serviceRepository;
+
 
     @Override
     public ClientResponse createClient(CreateClientRequest request) {
@@ -25,6 +32,9 @@ public class ClientServiceImpl implements ClientService {
             throw new ClientAlreadyExistsException("Client already exists");
         }
 
+        Set<ServiceEntity> selectedServices =
+                new HashSet<>(serviceRepository.findAllById(request.serviceIds()));
+
         Client client = Client.builder()
                 .name(request.name())
                 .email(request.email())
@@ -32,12 +42,14 @@ public class ClientServiceImpl implements ClientService {
                 .gstNumber(request.gstNumber())
                 .address(request.address())
                 .createdAt(LocalDateTime.now())
+                .services(selectedServices)
                 .build();
 
         Client saved = clientRepository.save(client);
 
         return mapToResponse(saved);
     }
+
 
     @Override
     public ClientResponse getClient(Long id) {
@@ -64,6 +76,12 @@ public class ClientServiceImpl implements ClientService {
     }
 
     private ClientResponse mapToResponse(Client client) {
+
+        Set<String> serviceNames = client.getServices()
+                .stream()
+                .map(ServiceEntity::getName)
+                .collect(Collectors.toSet());
+
         return new ClientResponse(
                 client.getId(),
                 client.getName(),
@@ -71,7 +89,9 @@ public class ClientServiceImpl implements ClientService {
                 client.getPhone(),
                 client.getGstNumber(),
                 client.getAddress(),
+                serviceNames,
                 client.getCreatedAt()
         );
     }
+
 }
