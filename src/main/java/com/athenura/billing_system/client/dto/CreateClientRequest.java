@@ -19,7 +19,5 @@ public record CreateClientRequest(
 
         String gstNumber,
 
-        String address,
-
-        Set<Long> serviceIds
+        String address
 ) {}

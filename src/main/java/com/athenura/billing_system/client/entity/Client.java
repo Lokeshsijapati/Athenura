@@ -38,12 +38,4 @@ public class Client {
 
     @Column(name = "created_at")
     private LocalDateTime createdAt;
-
-    @ManyToMany
-    @JoinTable(
-            name = "client_services",
-            joinColumns = @JoinColumn(name = "client_id"),
-            inverseJoinColumns = @JoinColumn(name = "service_id")
-    )
-    private Set<ServiceEntity> services = new HashSet<>();
 }

@@ -10,6 +10,5 @@ public record ClientResponse(
         String phone,
         String gstNumber,
         String address,
-        Set<String> services,
         LocalDateTime createdAt
 ) {}

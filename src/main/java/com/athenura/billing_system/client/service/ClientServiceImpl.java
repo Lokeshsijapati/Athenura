@@ -32,9 +32,6 @@ public class ClientServiceImpl implements ClientService {
             throw new ClientAlreadyExistsException("Client already exists");
         }
 
-        Set<ServiceEntity> selectedServices =
-                new HashSet<>(serviceRepository.findAllById(request.serviceIds()));
-
         Client client = Client.builder()
                 .name(request.name())
                 .email(request.email())
@@ -42,7 +39,6 @@ public class ClientServiceImpl implements ClientService {
                 .gstNumber(request.gstNumber())
                 .address(request.address())
                 .createdAt(LocalDateTime.now())
-                .services(selectedServices)
                 .build();
 
         Client saved = clientRepository.save(client);
@@ -76,12 +72,6 @@ public class ClientServiceImpl implements ClientService {
     }
 
     private ClientResponse mapToResponse(Client client) {
-
-        Set<String> serviceNames = client.getServices()
-                .stream()
-                .map(ServiceEntity::getName)
-                .collect(Collectors.toSet());
-
         return new ClientResponse(
                 client.getId(),
                 client.getName(),
@@ -89,7 +79,6 @@ public class ClientServiceImpl implements ClientService {
                 client.getPhone(),
                 client.getGstNumber(),
                 client.getAddress(),
-                serviceNames,
                 client.getCreatedAt()
         );
     }
