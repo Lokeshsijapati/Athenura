@@ -1,0 +1,38 @@
+package com.athenura.billing_system.InvoiceFolder.config;
+
+import com.cloudinary.Cloudinary;
+import com.cloudinary.utils.ObjectUtils;
+
+import jakarta.annotation.PostConstruct;
+import lombok.Getter;
+import lombok.Setter;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+@ConfigurationProperties(prefix = "cloudinary")
+@Getter
+@Setter
+public class Clouds {
+
+    private String cloudName;
+    private String apiKey;
+    private String apiSecret;
+
+    @Bean
+    public Cloudinary cloudinary() {
+        return new Cloudinary(ObjectUtils.asMap(
+                "cloud_name", cloudName,
+                "api_key", apiKey,
+                "api_secret", apiSecret
+        ));
+    }
+
+    @PostConstruct
+    public void printKeys() {
+        System.out.println("Cloud Name: " + cloudName);
+        System.out.println("API Key: " + apiKey);
+        System.out.println("API Secret: " + apiSecret);
+    }
+}

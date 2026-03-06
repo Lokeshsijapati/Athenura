@@ -6,23 +6,20 @@ import com.athenura.billing_system.client.entity.Client;
 import com.athenura.billing_system.client.exception.ClientAlreadyExistsException;
 import com.athenura.billing_system.client.exception.ClientNotFoundException;
 import com.athenura.billing_system.client.repository.ClientRepository;
-import com.athenura.billing_system.service.entity.ServiceEntity;
-import com.athenura.billing_system.service.repository.ServiceRepository;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.HashSet;
+
 import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
+
 
 @Service
 @RequiredArgsConstructor
 public class ClientServiceImpl implements ClientService {
 
     private final ClientRepository clientRepository;
-    private final ServiceRepository serviceRepository;
 
 
     @Override

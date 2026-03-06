@@ -19,7 +19,7 @@ public class ServiceDataInitializer implements CommandLineRunner {
 
             serviceRepository.save(
                     ServiceEntity.builder()
-                            .name("Custom Software Development")
+                            .serviceName("Custom Software Development")
                             .description("Tailored enterprise solutions")
                             .basePrice(50000.0)
                             .gstPercentage(18.0)
@@ -29,7 +29,7 @@ public class ServiceDataInitializer implements CommandLineRunner {
 
             serviceRepository.save(
                     ServiceEntity.builder()
-                            .name("Website Development")
+                            .serviceName("Website Development")
                             .description("Corporate & dynamic websites")
                             .basePrice(30000.0)
                             .gstPercentage(18.0)
@@ -39,7 +39,7 @@ public class ServiceDataInitializer implements CommandLineRunner {
 
             serviceRepository.save(
                     ServiceEntity.builder()
-                            .name("AI & Machine Learning")
+                            .serviceName("AI & Machine Learning")
                             .description("AI automation & analytics")
                             .basePrice(80000.0)
                             .gstPercentage(18.0)
@@ -49,7 +49,7 @@ public class ServiceDataInitializer implements CommandLineRunner {
 
             serviceRepository.save(
                     ServiceEntity.builder()
-                            .name("Cloud Solutions & DevOps")
+                            .serviceName("Cloud Solutions & DevOps")
                             .description("Cloud infra & CI/CD pipelines")
                             .basePrice(60000.0)
                             .gstPercentage(18.0)
@@ -59,7 +59,7 @@ public class ServiceDataInitializer implements CommandLineRunner {
 
             serviceRepository.save(
                     ServiceEntity.builder()
-                            .name("UI/UX Design")
+                            .serviceName("UI/UX Design")
                             .description("Product UI & UX design")
                             .basePrice(20000.0)
                             .gstPercentage(18.0)
@@ -69,7 +69,7 @@ public class ServiceDataInitializer implements CommandLineRunner {
 
             serviceRepository.save(
                     ServiceEntity.builder()
-                            .name("IT Consulting")
+                            .serviceName("IT Consulting")
                             .description("Strategic technology consulting")
                             .basePrice(40000.0)
                             .gstPercentage(18.0)

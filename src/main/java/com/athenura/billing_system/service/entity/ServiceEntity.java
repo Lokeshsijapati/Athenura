@@ -17,7 +17,7 @@ public class ServiceEntity {
     private Long id;
 
     @Column(unique = true, nullable = false)
-    private String name;
+    private String serviceName;
 
     private String description;
 
