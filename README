@@ -1,7 +1,7 @@
 # Athenura Billing System
 
-Athenura is a billing management system developed to handle billing related operations.
-This project focuses on managing products, customers and generating billing data.
+Athenura is a billing management system developed to manage billing operations efficiently.
+The application helps manage products, customers and generate billing records with PDF generation support.
 
 ## Technologies Used
 
@@ -11,27 +11,41 @@ This project focuses on managing products, customers and generating billing data
 - Hibernate
 - MySQL
 - REST API
-- Cloudinary Api
+- Cloudinary API
+- Spring Security
+- Java Mail
 
 ## Features
 
-- Manage products
+- Manage product details
 - Manage customer details
-- Create billing records
+- Create and manage billing records
+- Generate PDF invoices
+- Upload and manage files using Cloudinary
 - Store and retrieve billing information
 - CRUD operations using REST APIs
-- Pdf Genrating
+- Secure API access
+- Email functionality for sending notifications
 
 ## Project Structure
 
-The application is divided into:
+The application follows layered architecture:
 
-Controller - API handling  
-Service - Business logic  
-Repository - Database interaction  
+Controller Layer  
+- Handles API requests and responses
+
+Service Layer  
+- Contains business logic
+
+Repository Layer  
+- Handles database operations
+
+Entity Layer  
+- Represents database models
 
 ## How To Run
 
 1. Clone the repository
-2. Configure MySQL database
-3. Start the Spring Boot application
+
+```bash
+git clone <https://github.com/Lokeshsijapati/Athenura-Billing-System.git>
